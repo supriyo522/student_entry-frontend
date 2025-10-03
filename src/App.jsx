@@ -56,7 +56,7 @@ function App() {
           <label htmlFor="grade">Grade</label>
           <br />
           <select id="grade" name="grade" value={formData.grade} onChange={handleChange}>
-            <option value="">Select Class</option>
+            <option value="">Select grade</option>
             <option value="5">5</option>
             <option value="6">6</option>
             <option value="7">7</option>
