@@ -4,12 +4,10 @@ function App() {
   const [formData, setFormData] = useState({ name: "", age: "", grade: "" });
   const [students, setStudents] = useState([]);
 
-  // Handle input/select change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Add student
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.age || !formData.grade) return;
@@ -18,7 +16,6 @@ function App() {
     setFormData({ name: "", age: "", grade: "" });
   };
 
-  // Remove student
   const handleRemove = (index) => {
     setStudents(students.filter((_, i) => i !== index));
   };
@@ -30,51 +27,35 @@ function App() {
 
       <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
         <div style={{ marginBottom: "10px" }}>
-          <label style={{ marginRight: "10px" }}>
-            Name
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={formData.name}
-              onChange={handleChange}
-              style={{ marginLeft: "5px" }}
-            />
-          </label>
+          <input
+            type="text"
+            name="name"
+            placeholder="e.g. MS Dhoni"
+            value={formData.name}
+            onChange={handleChange}
+          />
         </div>
 
         <div style={{ marginBottom: "10px" }}>
-          <label style={{ marginRight: "10px" }}>
-            Age
-            <input
-              type="number"
-              name="age"
-              placeholder="Age"
-              value={formData.age}
-              onChange={handleChange}
-              style={{ marginLeft: "5px" }}
-            />
-          </label>
+          <input
+            type="number"
+            name="age"
+            placeholder="e.g. 34"
+            value={formData.age}
+            onChange={handleChange}
+          />
         </div>
 
         <div style={{ marginBottom: "10px" }}>
-          <label style={{ marginRight: "10px" }}>
-            Grade
-            <select
-              name="grade"
-              value={formData.grade}
-              onChange={handleChange}
-              style={{ marginLeft: "5px" }}
-            >
-              <option value="">Grade</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-          </label>
+          <select name="grade" value={formData.grade} onChange={handleChange}>
+            <option value="">Select Class</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
         </div>
 
         <button type="submit">Add Student</button>
