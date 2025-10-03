@@ -27,8 +27,11 @@ function App() {
 
       <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
         <div style={{ marginBottom: "10px" }}>
+          <label htmlFor="name">Name</label>
+          <br />
           <input
             type="text"
+            id="name"
             name="name"
             placeholder="e.g. MS Dhoni"
             value={formData.name}
@@ -37,8 +40,11 @@ function App() {
         </div>
 
         <div style={{ marginBottom: "10px" }}>
+          <label htmlFor="age">Age</label>
+          <br />
           <input
             type="number"
+            id="age"
             name="age"
             placeholder="e.g. 34"
             value={formData.age}
@@ -47,7 +53,9 @@ function App() {
         </div>
 
         <div style={{ marginBottom: "10px" }}>
-          <select name="grade" value={formData.grade} onChange={handleChange}>
+          <label htmlFor="grade">Grade</label>
+          <br />
+          <select id="grade" name="grade" value={formData.grade} onChange={handleChange}>
             <option value="">Select Class</option>
             <option value="5">5</option>
             <option value="6">6</option>
