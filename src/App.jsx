@@ -22,12 +22,10 @@ function App() {
 
   return (
     <div style={{ textAlign: "center", marginTop: "30px", fontFamily: "Arial" }}>
-
       <h1>Student Entry Form</h1>
       <p>Add students and review the list below.</p>
 
       <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
-   
         <input
           type="text"
           name="name"
@@ -43,17 +41,18 @@ function App() {
           onChange={handleChange}
         />
 
-     
         <select name="grade" value={formData.grade} onChange={handleChange}>
           <option value="">Grade</option>
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="C">C</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
         </select>
 
         <button type="submit">Add Student</button>
       </form>
-
 
       {students.length === 0 && <p>No students added yet.</p>}
 
@@ -74,7 +73,6 @@ function App() {
                 <td>{student.age}</td>
                 <td>{student.grade}</td>
                 <td>
-            
                   <button onClick={() => handleRemove(index)}>Remove</button>
                 </td>
               </tr>
