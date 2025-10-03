@@ -16,6 +16,10 @@ function App() {
     setFormData({ name: "", age: "", grade: "" });
   };
 
+  const handleClear = () => {
+    setFormData({ name: "", age: "", grade: "" });
+  };
+
   const handleRemove = (index) => {
     setStudents(students.filter((_, i) => i !== index));
   };
@@ -66,7 +70,12 @@ function App() {
           </select>
         </div>
 
-        <button type="submit">Add Student</button>
+        <button type="submit" style={{ marginRight: "10px" }}>
+          Add Student
+        </button>
+        <button type="button" onClick={handleClear}>
+          Clear
+        </button>
       </form>
 
       {students.length === 0 && <p>No students added yet.</p>}
