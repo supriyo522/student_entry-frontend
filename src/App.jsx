@@ -4,10 +4,12 @@ function App() {
   const [formData, setFormData] = useState({ name: "", age: "", grade: "" });
   const [students, setStudents] = useState([]);
 
+  // Handle input/select change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Add student
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.age || !formData.grade) return;
@@ -16,6 +18,7 @@ function App() {
     setFormData({ name: "", age: "", grade: "" });
   };
 
+  // Remove student
   const handleRemove = (index) => {
     setStudents(students.filter((_, i) => i !== index));
   };
@@ -26,30 +29,53 @@ function App() {
       <p>Add students and review the list below.</p>
 
       <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          name="age"
-          placeholder="Age"
-          value={formData.age}
-          onChange={handleChange}
-        />
+        <div style={{ marginBottom: "10px" }}>
+          <label style={{ marginRight: "10px" }}>
+            Name
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={formData.name}
+              onChange={handleChange}
+              style={{ marginLeft: "5px" }}
+            />
+          </label>
+        </div>
 
-        <select name="grade" value={formData.grade} onChange={handleChange}>
-          <option value="">Grade</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
+        <div style={{ marginBottom: "10px" }}>
+          <label style={{ marginRight: "10px" }}>
+            Age
+            <input
+              type="number"
+              name="age"
+              placeholder="Age"
+              value={formData.age}
+              onChange={handleChange}
+              style={{ marginLeft: "5px" }}
+            />
+          </label>
+        </div>
+
+        <div style={{ marginBottom: "10px" }}>
+          <label style={{ marginRight: "10px" }}>
+            Grade
+            <select
+              name="grade"
+              value={formData.grade}
+              onChange={handleChange}
+              style={{ marginLeft: "5px" }}
+            >
+              <option value="">Grade</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </label>
+        </div>
 
         <button type="submit">Add Student</button>
       </form>
@@ -57,7 +83,10 @@ function App() {
       {students.length === 0 && <p>No students added yet.</p>}
 
       {students.length > 0 && (
-        <table border="1" style={{ margin: "0 auto", borderCollapse: "collapse" }}>
+        <table
+          border="1"
+          style={{ margin: "0 auto", borderCollapse: "collapse", minWidth: "300px" }}
+        >
           <thead>
             <tr>
               <th>Name</th>
@@ -71,7 +100,7 @@ function App() {
               <tr key={index}>
                 <td>{student.name}</td>
                 <td>{student.age}</td>
-                <td>{student.grade}</td>
+                <td>{`Class ${student.grade}`}</td>
                 <td>
                   <button onClick={() => handleRemove(index)}>Remove</button>
                 </td>
