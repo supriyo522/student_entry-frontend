@@ -46,7 +46,7 @@ function App() {
             type="number"
             id="age"
             name="age"
-            placeholder="e.g. 34"
+            placeholder="e.g. 14"
             value={formData.age}
             onChange={handleChange}
           />
